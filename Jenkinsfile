@@ -11,7 +11,7 @@ Map bindMap = [
 podTemplate(yaml: podDef(bindMap)) {
   node(POD_LABEL) {
     container(webhooks) {
-      stage('Prerequisites') {
+      stage('Prototype load') {
         checkout scm
         sh 'ls -al'
         myScript = load "${env.WORKSPACE}/scripts/simple-function.groovy"
