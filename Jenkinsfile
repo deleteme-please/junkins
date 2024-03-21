@@ -1,7 +1,6 @@
 library('jenkins-pipeline-setup')
 
 String webhooks = 'webhooks'
-String user = 'admin'
 Script myScript
 
 Map bindMap = [
@@ -18,22 +17,4 @@ podTemplate(yaml: podDef(bindMap)) {
       }
     }
   }
-}
-
-
-
-pipeline {
-    agent any
-
-    stages {
-        stage('Load Script and Execute Function') {
-            steps {
-                script {
-                    // Assuming 'groovyScripts' is a directory at the root of your repo
-                    def myScript = load "${env.WORKSPACE}/groovyScripts/myScript.groovy"
-                    myScript.myFunction()
-                }
-            }
-        }
-    }
 }
